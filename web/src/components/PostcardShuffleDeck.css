@@ -1,0 +1,32 @@
+.shuffle-deck {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shuffle-deck__ghosts {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.shuffle-deck__ghost {
+  position: absolute;
+  transition: transform 0.38s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.shuffle-deck__main {
+  position: relative;
+  z-index: 10;
+  transition:
+    transform 0.38s cubic-bezier(0.34, 1.2, 0.64, 1),
+    box-shadow 0.25s ease-out;
+}
+
+.shuffle-deck__main--shuffling {
+  filter: drop-shadow(0 12px 24px rgba(209, 97, 148, 0.25));
+}

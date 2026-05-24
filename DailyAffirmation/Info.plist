@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>Daily Affirmation</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Daily Affirmation can remind you to capture your thought and generate your affirmation.</string>
+	<key>UILaunchScreen</key>
+	<dict/>
+</dict>
+</plist>
