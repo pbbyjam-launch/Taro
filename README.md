@@ -12,6 +12,8 @@ npm run dev
 
 Open http://localhost:5173 (or the URL Vite prints).
 
+**Live site (GitHub Pages):** after deploy, https://pbbyjam-launch.github.io/Taro/
+
 1. Open **Settings** → choose **OpenAI** or **Anthropic** → paste your API key → **Save API key**.
 2. On **Today**, write about your day → **Submit** → flip the card for your affirmation.
 
