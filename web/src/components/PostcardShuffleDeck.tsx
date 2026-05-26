@@ -14,10 +14,7 @@ export function PostcardShuffleDeck({ isShuffling, isFlipped, children }: Postca
   const reduceMotion = usePrefersReducedMotion()
 
   useEffect(() => {
-    if (!shouldShuffle) {
-      setShuffleStep(0)
-      return
-    }
+    if (!shouldShuffle) return
 
     const interval = window.setInterval(
       () => setShuffleStep((s) => s + 1),
@@ -26,7 +23,7 @@ export function PostcardShuffleDeck({ isShuffling, isFlipped, children }: Postca
     return () => clearInterval(interval)
   }, [shouldShuffle, reduceMotion])
 
-  const step = shuffleStep % 4
+  const step = shouldShuffle ? shuffleStep % 4 : 0
   const offsets = [
     { x: 0, y: 0, rot: 0 },
     { x: 34, y: -8, rot: 9 },
