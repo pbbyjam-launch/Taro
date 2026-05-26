@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { MAX_THOUGHT_LENGTH } from '../services/affirmationService'
+import { countWords, MAX_THOUGHT_WORDS } from '../services/affirmationService'
 import type { CardPhase } from '../hooks/useToday'
 import { colors, gradients, layout } from '../theme/colors'
 import { PostcardShuffleDeck } from './PostcardShuffleDeck'
@@ -29,7 +29,7 @@ export function AffirmationFlipCard({
 }: AffirmationFlipCardProps) {
   const trimmedThought = thought.trim()
   const canSubmit =
-    trimmedThought.length > 0 && thought.length <= MAX_THOUGHT_LENGTH && !isShuffling
+    trimmedThought.length > 0 && countWords(thought) <= MAX_THOUGHT_WORDS && !isShuffling
 
   const handleCardClick = () => {
     if (!canFlip || isShuffling) return

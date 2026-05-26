@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import * as dayEntryStore from '../storage/dayEntryStore'
 import { getApiKey, getProvider } from '../storage/settings'
 import {
@@ -12,8 +12,9 @@ import { parseCalendarDayKey } from '../utils/dates'
 export type CardPhase = 'input' | 'shuffling' | 'result'
 
 export function useToday() {
-  const [thought, setThought] = useState('')
-  const [affirmation, setAffirmation] = useState<string | null>(null)
+  const [initialEntry] = useState(() => dayEntryStore.fetchOrCreateToday())
+  const [thought, setThought] = useState(initialEntry.thought)
+  const [affirmation, setAffirmation] = useState<string | null>(initialEntry.affirmation)
   const [cardPhase, setCardPhase] = useState<CardPhase>('input')
   const [isFlipped, setIsFlipped] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -26,10 +27,6 @@ export function useToday() {
     setIsFlipped(false)
     setErrorMessage(null)
   }, [])
-
-  useEffect(() => {
-    loadToday()
-  }, [loadToday])
 
   const saveThought = useCallback(
     (value: string) => {
