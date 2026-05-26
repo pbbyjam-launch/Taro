@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  background: rgb(255, 255, 255);
 }
 
 .today-view__content {
@@ -10,20 +11,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
-  gap: 20px;
+  justify-content: flex-end;
+  min-height: 0;
+  padding: 0 10px 12px;
+  gap: 10px;
 }
 
 .today-view__footer {
-  min-height: 20px;
+  min-height: 18px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .today-view__hint {
   margin: 0;
   font-size: 0.75rem;
-  color: rgb(107, 117, 112);
+  color: rgba(26, 25, 24, 0.62);
 }
 
 .today-view__error {
@@ -33,13 +36,13 @@
   justify-content: center;
   gap: 8px;
   font-size: 0.75rem;
-  color: rgb(230, 126, 34);
+  color: rgb(128, 67, 43);
 }
 
 .today-view__error button {
   border: none;
   background: none;
-  color: rgb(51, 173, 163);
+  color: rgb(26, 25, 24);
   font-weight: 600;
   font-size: 0.75rem;
   cursor: pointer;

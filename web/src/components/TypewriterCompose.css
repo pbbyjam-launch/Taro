@@ -1,0 +1,463 @@
+.typewriter-compose {
+  flex: 1;
+  width: 100%;
+  max-width: 430px;
+  min-height: 0;
+  display: flex;
+  color: rgb(26, 25, 24);
+}
+
+.typewriter-compose__scene {
+  --paper-advance: 0px;
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px 8px 0;
+}
+
+.typewriter-compose__paper-stack {
+  position: absolute;
+  left: 50%;
+  bottom: calc(148px + var(--paper-advance));
+  z-index: 1;
+  width: min(74vw, 286px);
+  transform: translateX(-50%);
+  transition: bottom 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.typewriter-compose__paper-shadow {
+  position: absolute;
+  inset: 12px 10px -6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  filter: blur(12px);
+}
+
+.typewriter-compose__paper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: min(58dvh, 438px);
+  min-height: 328px;
+  padding: 17px 20px 15px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0)),
+    rgb(241, 240, 235);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(70, 65, 55, 0.08);
+  overflow: hidden;
+}
+
+.typewriter-compose__paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(rgba(53, 47, 38, 0.03) 1px, transparent 1px);
+  background-size:
+    19px 100%,
+    100% 24px;
+  mix-blend-mode: multiply;
+}
+
+.typewriter-compose__brand {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.1rem, 12vw, 3rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.12em;
+  color: rgb(34, 33, 32);
+}
+
+.typewriter-compose__paper-window {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 0;
+  background: rgba(248, 247, 242, 0.64);
+  box-shadow: inset 0 0 0 1px rgba(42, 38, 32, 0.04);
+  overflow: hidden;
+}
+
+.typewriter-compose__print-layer,
+.typewriter-compose__textarea {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 16px 13px;
+  border: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.73rem;
+  line-height: 1.62;
+  letter-spacing: -0.02em;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.typewriter-compose__print-layer::-webkit-scrollbar,
+.typewriter-compose__textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.typewriter-compose__print-layer {
+  color: rgba(32, 31, 30, 0.82);
+  pointer-events: none;
+}
+
+.typewriter-compose__printed-text {
+  margin: 0;
+  min-height: 100%;
+  overflow-wrap: anywhere;
+  text-shadow: 0.16px 0 rgba(12, 12, 12, 0.38);
+}
+
+.typewriter-compose__printed-word--bleed {
+  color: rgba(22, 21, 20, 0.88);
+  text-shadow:
+    0.35px 0 rgba(8, 8, 8, 0.42),
+    -0.24px 0.28px rgba(8, 8, 8, 0.2),
+    0 0 0.9px rgba(8, 8, 8, 0.3);
+  filter: blur(0.08px);
+}
+
+.typewriter-compose__placeholder {
+  margin: 0;
+  color: rgba(60, 57, 52, 0.5);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.68rem;
+  letter-spacing: -0.03em;
+}
+
+.typewriter-compose__affirmation {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(32, 31, 30, 0.25);
+  color: rgba(32, 31, 30, 0.78);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.typewriter-compose__affirmation span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.typewriter-compose__affirmation p {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.typewriter-compose__textarea {
+  z-index: 2;
+  resize: none;
+  background: transparent;
+  color: transparent;
+  caret-color: rgb(26, 25, 24);
+  outline: none;
+  -webkit-text-fill-color: transparent;
+}
+
+.typewriter-compose__textarea::selection {
+  background: rgba(28, 27, 26, 0.16);
+}
+
+.typewriter-compose__textarea:disabled {
+  cursor: wait;
+}
+
+.typewriter-compose__word-count {
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+  text-align: right;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.04em;
+  color: rgba(52, 49, 44, 0.52);
+}
+
+.typewriter-compose__typewriter {
+  position: relative;
+  z-index: 2;
+  width: min(98vw, 414px);
+  height: 214px;
+  margin-bottom: 0;
+}
+
+.typewriter-compose__paper-slot {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 55px;
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(rgb(24, 24, 24), rgb(4, 4, 4));
+  box-shadow:
+    inset 0 5px 7px rgba(255, 255, 255, 0.08),
+    0 -4px 10px rgba(0, 0, 0, 0.16);
+}
+
+.typewriter-compose__platen {
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  top: 64px;
+  height: 31px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 16% 40%, rgba(255, 255, 255, 0.22), transparent 9%),
+    linear-gradient(180deg, rgb(44, 44, 44), rgb(9, 9, 9) 58%, rgb(1, 1, 1));
+  box-shadow:
+    inset 0 3px 2px rgba(255, 255, 255, 0.13),
+    0 8px 14px rgba(0, 0, 0, 0.26);
+}
+
+.typewriter-compose__platen::before,
+.typewriter-compose__platen::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  width: 33px;
+  height: 25px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgb(38, 38, 38), rgb(8, 8, 8));
+}
+
+.typewriter-compose__platen::before {
+  left: -9px;
+}
+
+.typewriter-compose__platen::after {
+  right: -9px;
+}
+
+.typewriter-compose__platen span {
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  width: 72%;
+  height: 2px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.typewriter-compose__carriage {
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  top: 43px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.typewriter-compose__carriage-knob {
+  width: 23px;
+  height: 23px;
+  border-radius: 6px;
+  background: linear-gradient(145deg, rgb(34, 34, 34), rgb(3, 3, 3));
+  box-shadow: inset 0 2px rgba(255, 255, 255, 0.12);
+}
+
+.typewriter-compose__carriage-rail {
+  flex: 1;
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgb(19, 19, 19), rgb(44, 44, 44), rgb(15, 15, 15));
+}
+
+.typewriter-compose__type-bars {
+  position: absolute;
+  left: 50%;
+  top: 82px;
+  width: 122px;
+  height: 48px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 8px 8px;
+  background:
+    radial-gradient(ellipse at 50% 0%, transparent 30%, rgba(255, 255, 255, 0.08) 31% 34%, transparent 35%),
+    linear-gradient(180deg, rgba(28, 28, 28, 0.82), rgba(4, 4, 4, 0.98));
+  overflow: hidden;
+}
+
+.typewriter-compose__type-bars span {
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 2px;
+  height: 46px;
+  transform-origin: bottom center;
+  background: rgba(150, 150, 150, 0.24);
+}
+
+.typewriter-compose__type-bars span:nth-child(1) {
+  transform: translateX(-50%) rotate(-32deg);
+}
+
+.typewriter-compose__type-bars span:nth-child(2) {
+  transform: translateX(-50%);
+}
+
+.typewriter-compose__type-bars span:nth-child(3) {
+  transform: translateX(-50%) rotate(32deg);
+}
+
+.typewriter-compose__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 126px;
+  padding: 31px 13px 15px;
+  border-radius: 26px 26px 11px 11px / 38px 38px 11px 11px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.18), transparent 42%),
+    linear-gradient(180deg, rgb(27, 27, 27), rgb(6, 6, 6) 72%, rgb(0, 0, 0));
+  box-shadow:
+    inset 0 3px 3px rgba(255, 255, 255, 0.08),
+    0 18px 22px rgba(0, 0, 0, 0.24);
+}
+
+.typewriter-compose__keyboard {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.typewriter-compose__key-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.typewriter-compose__key-row:nth-child(3) {
+  padding-left: 10px;
+}
+
+.typewriter-compose__key-row:nth-child(4) {
+  padding-left: 4px;
+}
+
+.typewriter-compose__key-row--controls {
+  margin-top: 2px;
+}
+
+.typewriter-compose__key {
+  display: grid;
+  place-items: center;
+  width: clamp(20px, 5.7vw, 25px);
+  height: clamp(17px, 4.8vw, 21px);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 50% 28%, rgb(255, 255, 255), rgb(228, 228, 224) 58%, rgb(181, 181, 176));
+  color: rgb(22, 22, 22);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(0.42rem, 1.9vw, 0.55rem);
+  font-weight: 700;
+  line-height: 1;
+  box-shadow:
+    inset 0 -2px 1px rgba(0, 0, 0, 0.12),
+    0 2px 0 rgb(105, 105, 101);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.08s ease;
+}
+
+.typewriter-compose__key--wide {
+  width: clamp(86px, 27vw, 118px);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.typewriter-compose__key--active {
+  transform: translateY(3px) scale(0.97);
+  filter: brightness(0.92);
+  box-shadow:
+    inset 0 2px 2px rgba(0, 0, 0, 0.16),
+    0 0 0 rgb(105, 105, 101);
+}
+
+.typewriter-compose__submit {
+  position: absolute;
+  right: 17px;
+  bottom: 17px;
+  z-index: 2;
+  min-width: 78px;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid rgba(241, 240, 235, 0.34);
+  border-radius: 999px;
+  background: rgb(241, 240, 235);
+  color: rgb(18, 18, 18);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  box-shadow:
+    inset 0 -2px rgba(0, 0, 0, 0.12),
+    0 5px 11px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+}
+
+.typewriter-compose__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.typewriter-compose__spacebar {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: 10px;
+  height: 11px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgb(236, 236, 230), rgb(181, 181, 175));
+  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-height: 700px) {
+  .typewriter-compose__paper-stack {
+    bottom: calc(128px + var(--paper-advance));
+  }
+
+  .typewriter-compose__paper {
+    height: min(54dvh, 372px);
+    min-height: 278px;
+  }
+
+  .typewriter-compose__typewriter {
+    height: 194px;
+  }
+
+  .typewriter-compose__body {
+    height: 117px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-compose__paper-stack,
+  .typewriter-compose__key {
+    transition: none;
+  }
+}

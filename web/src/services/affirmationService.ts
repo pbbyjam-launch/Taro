@@ -2,7 +2,7 @@ import type { AIProvider } from '../storage/settings'
 import { affirmationSystemPrompt, affirmationUserMessage } from '../prompts/affirmationPrompt'
 import { checkSuccess } from './httpHelpers'
 
-export const MAX_THOUGHT_LENGTH = 2000
+export const MAX_THOUGHT_WORDS = 2000
 
 export type AffirmationErrorCode =
   | 'emptyThought'
@@ -27,12 +27,24 @@ export function validateThought(thought: string): void {
   if (!trimmed) {
     throw new AffirmationError('emptyThought', 'Write a thought about your day first.')
   }
-  if (trimmed.length > MAX_THOUGHT_LENGTH) {
+  if (countWords(trimmed) > MAX_THOUGHT_WORDS) {
     throw new AffirmationError(
       'thoughtTooLong',
-      `Keep your thought under ${MAX_THOUGHT_LENGTH} characters.`,
+      `Keep your thought under ${MAX_THOUGHT_WORDS} words.`,
     )
   }
+}
+
+export function countWords(value: string): number {
+  return value.trim().match(/\S+/g)?.length ?? 0
+}
+
+export function clampToThoughtWordLimit(value: string): string {
+  const matches = [...value.matchAll(/\S+/g)]
+  if (matches.length <= MAX_THOUGHT_WORDS) return value
+
+  const lastAllowedWord = matches[MAX_THOUGHT_WORDS - 1]
+  return value.slice(0, (lastAllowedWord.index ?? 0) + lastAllowedWord[0].length)
 }
 
 const openAIUrl = import.meta.env.DEV
